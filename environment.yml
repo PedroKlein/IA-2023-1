@@ -1,0 +1,9 @@
+dependencies:
+  - jupyter
+  - numpy
+  - matplotlib
+  - pylint
+  - pandas
+  - tensorflow
+  - ipython
+  - ipywidgets

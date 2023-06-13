@@ -1,4 +1,5 @@
 dependencies:
+  - python=3.8
   - jupyter
   - numpy
   - matplotlib
@@ -7,3 +8,6 @@ dependencies:
   - tensorflow
   - ipython
   - ipywidgets
+  - ipykernel
+  - tqdm
+  - unittest

@@ -1,1 +1,2 @@
-# IA-2023-1
+# INF01048 - Inteligência Artificial - 2023/1 - Grupo 2
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/PedroKlein/IA-2023-1/tree/main?hide_repo_select=true&ref=main&quickstart=1)

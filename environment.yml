@@ -10,4 +10,3 @@ dependencies:
   - ipywidgets
   - ipykernel
   - tqdm
-  - unittest

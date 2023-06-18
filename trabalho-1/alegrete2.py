@@ -3,8 +3,6 @@ import pandas as pd
 
 
 #leitura do arquivo com os dados
-#alegrete = "/home/brendaschussler/Área de Trabalho/trab1IA/kit_neural_net/alegrete.csv"
-#dados = pd.read_csv(alegrete, header=None) #nao tem cabeçalho 
 #dados = np.genfromtxt('/home/brendaschussler/Área de Trabalho/trab1IA/kit_neural_net/alegrete.csv', delimiter=',')
 
 def compute_mse(b, w, data):

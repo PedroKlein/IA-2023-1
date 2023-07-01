@@ -4,10 +4,10 @@
 
 | Nome                           | Matricula   |
 | :----------------------------- | :---------: |
-| Brenda Streit Schussler        |             |
+| Brenda Streit Schussler        | 00325353    |
 | Felipe Bertoglio               |             |
 | Pedro Afonso Klein             | 00324104    |
-| Pedro Henrique Casarotto Rigon |             |
+| Pedro Henrique Casarotto Rigon | 00325358    |
 
 ## Rede neural de uma camada
 

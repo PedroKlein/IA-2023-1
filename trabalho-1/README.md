@@ -23,19 +23,19 @@ Para todas as redes neurais, foi escolhido o algoritmo de otimizacao RMSProp (Ro
 
 | Dataset       | Resolucao   | Classes | Amostras | Acuracia | Tempo |
 | :-------------| :---------: | :-----: | :------: | :------: | :---: |
-| MNIST         |   28x28x1   |         |          |          |       |
-| Fashion MNIST |   28x28x1   |         |          |          |       |
-| CIFAR10       |   32x32x3   |         |          |          |       |
-| CIFAR100      |   32x32x3   |         |          |          |       |
+| MNIST         |   28x28x1   |    10   |   60000  |          |       |
+| Fashion MNIST |   28x28x1   |    10   |   60000  |          |       |
+| CIFAR10       |   32x32x3   |    10   |   50000  |          |       |
+| CIFAR100      |   32x32x3   |    100  |   50000  |          |       |
 
 > #### Legenda da tabela
 >
 > - **Dataset**: Nome do dataset.
-> - **Resolucao**: Altura x Largura x Canais de cor das imagens no dataset
-> - **Classes**: 
-> - **Amostras**:
-> - **Acuracia**:
-> - **Tempo**:
+> - **Resolucao**: Altura x Largura x Canais de cor das imagens no dataset.
+> - **Classes**: Numero de classificacoes diferentes.
+> - **Amostras**: Numero de amostras totais no dataset.
+> - **Acuracia**: Precisao do resultado em comparacao com os dados de teste do dataset.
+> - **Tempo**: Tempo de execucao do treinamento da rede com 10 epocas.
 
 #### Questoes
 

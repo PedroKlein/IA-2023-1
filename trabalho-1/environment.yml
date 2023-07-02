@@ -1,0 +1,13 @@
+name: trabalho-1
+dependencies:
+  - python=3.8
+  - jupyter
+  - numpy
+  - matplotlib
+  - pylint
+  - pandas
+  - tensorflow
+  - ipython
+  - ipywidgets
+  - ipykernel
+  - tqdm

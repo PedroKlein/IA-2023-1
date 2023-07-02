@@ -5,7 +5,7 @@
 | Nome                           | Matricula   |
 | :----------------------------- | :---------: |
 | Brenda Streit Schussler        | 00325353    |
-| Felipe Bertoglio               |             |
+| Felipe Bertoglio               | 00262669    |
 | Pedro Afonso Klein             | 00324104    |
 | Pedro Henrique Casarotto Rigon | 00325358    |
 
@@ -21,12 +21,12 @@ Para todas as redes neurais, foi escolhido o algoritmo de otimizacao RMSProp (Ro
 
 ### Resultados e Características dos datasets
 
-| Dataset       | Resolucao   | Classes | Amostras | Acuracia | Tempo |
-| :-------------| :---------: | :-----: | :------: | :------: | :---: |
-| MNIST         |   28x28x1   |    10   |   60000  |          |       |
-| Fashion MNIST |   28x28x1   |    10   |   60000  |          |       |
-| CIFAR10       |   32x32x3   |    10   |   50000  |          |       |
-| CIFAR100      |   32x32x3   |    100  |   50000  |          |       |
+| Dataset       | Resolucao   | Classes | Amostras | Acuracia | Tempo   |
+| :-------------| :---------: | :-----: | :------: | :------: | :-----: |
+| MNIST         |   28x28x1   |    10   |   60000  |  0.979   |  98.96  |
+| Fashion MNIST |   28x28x1   |    10   |   60000  |  0.853   |  97.15  |
+| CIFAR10       |   32x32x3   |    10   |   50000  |  0.658   | 130.59  |
+| CIFAR100      |   32x32x3   |    100  |   50000  |  0.345   | 129.25  |
 
 > #### Legenda da tabela
 >

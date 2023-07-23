@@ -43,7 +43,15 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.values = util.Counter()  # A Counter is a dict with default 0
 
         # Write value iteration code here
-        "*** YOUR CODE HERE ***"
+        for _ in range(0, self.iterations):
+            old_values = self.values.copy()
+            for state in self.mdp.getStates():
+                best_action = self.computeActionFromCustomValues(state, old_values)
+
+                if(best_action == None):
+                    continue
+            
+                self.values[state] = self.computeQValueFromCustomValues(state, best_action, old_values)
 
 
     def getValue(self, state):
@@ -57,8 +65,20 @@ class ValueIterationAgent(ValueEstimationAgent):
           Compute the Q-value of action in state from the
           value function stored in self.values.
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.computeQValueFromCustomValues(state, action, self.values)
+    
+    def computeQValueFromCustomValues(self, state, action, values):
+        """
+          Compute the Q-value of action in state from the
+          value function passed as parameter.
+        """
+        q_value = 0
+
+        for next_state, prob in self.mdp.getTransitionStatesAndProbs(state, action):
+            reward = self.mdp.getReward(state, action, next_state)
+            q_value += prob * (reward + self.discount * values[next_state])
+        
+        return q_value
 
     def computeActionFromValues(self, state):
         """
@@ -69,8 +89,27 @@ class ValueIterationAgent(ValueEstimationAgent):
           there are no legal actions, which is the case at the
           terminal state, you should return None.
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.computeActionFromCustomValues(state, self.values)
+
+    def computeActionFromCustomValues(self, state, values):
+        """
+          The policy is the best action in the given state
+          according to the values passed as parameter.
+
+          You may break ties any way you see fit.  Note that if
+          there are no legal actions, which is the case at the
+          terminal state, you should return None.
+        """
+        if(self.mdp.isTerminal(state)):
+            return None
+        
+        val_actions = util.Counter()
+        
+        for action in self.mdp.getPossibleActions(state):
+            val_actions[action] = self.computeQValueFromCustomValues(state, action, values)
+
+        return val_actions.argMax()
+            
 
     def getPolicy(self, state):
         return self.computeActionFromValues(state)

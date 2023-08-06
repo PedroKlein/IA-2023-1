@@ -1,9 +1,8 @@
 from typing import Iterable, Set, Tuple
+import queue
 
 # funcao para pegar a posicao do espaco ( _ ) na string
 # posicoes na string: 012345678
-
-
 def busca_posicao_espaco(string):
     for i in range(len(string)):
         if string[i] == '_':
@@ -14,8 +13,6 @@ def busca_posicao_espaco(string):
 # abaixo = +3 na posicao
 # direita = +1 na posicao
 # esquerda = -1 na posicao
-
-
 def troca_posicao(string, acao):
     posicao = busca_posicao_espaco(string)
 
@@ -52,7 +49,6 @@ class Nodo:
     """
     Implemente a classe Nodo com os atributos descritos na funcao init
     """
-
     def __init__(self, estado: str, pai: 'Nodo', acao: str, custo: int):
         """
         Inicializa o nodo com os atributos recebidos
@@ -82,6 +78,10 @@ class Nodo:
     
     def get_filhos(self)->Set['Nodo']:
         return self.filhos
+    
+    #comparação para usar fila de prioridades 
+    def __lt__(self, outro_nodo):
+        return (self.custo + dist_hamming(self.estado)) < (outro_nodo.custo + dist_hamming(outro_nodo.estado))
 
 
 def sucessor(estado: str) -> Set[Tuple[str, str]]:
@@ -125,13 +125,23 @@ def expande(nodo: Nodo) -> Set[Nodo]:
     :param nodo: objeto da classe Nodo
     :return:
     """
-
     for (estado, acao) in sucessor(nodo.estado):
         novo_nodo = Nodo(acao, nodo, estado, nodo.custo + 1)
         nodo.add_filho(novo_nodo)
 
     return nodo.get_filhos()
 
+def dist_hamming(estado):
+        d_hamming = 0
+        objetivo = "12345678_"
+        for n in range(len(estado)):
+            if objetivo[n] != estado[n]:
+                d_hamming += 1 
+        #retorna -1 pois é numero de peças fora do lugar, e o espaço _ nao é uma peça 
+        return d_hamming-1
+
+def custo_nodo(nodo):
+    return nodo.custo + dist_hamming(nodo.estado)
 
 def astar_hamming(estado: str) -> list[str]:
     """
@@ -143,8 +153,30 @@ def astar_hamming(estado: str) -> list[str]:
     :return:
     """
     # substituir a linha abaixo pelo seu codigo
-    raise NotImplementedError
+    explorados = set()
+    fronteira = queue.PriorityQueue()
+    raiz = Nodo(estado=estado, pai=None, acao=None, custo=0)
+    fronteira.put((custo_nodo(raiz), raiz))
 
+    while not fronteira.empty():
+       dont_care, melhor_no = fronteira.get()
+
+       if melhor_no.estado == "12345678_":
+            caminho = []
+            while melhor_no.pai is not None:
+                caminho.append(melhor_no.acao)
+                melhor_no = melhor_no.pai
+            caminho.reverse()
+            return caminho
+       
+       explorados.add(melhor_no.estado)
+
+       vizinhos = expande(melhor_no)   
+       for no in vizinhos:
+            if no.estado not in explorados:
+                fronteira.put((custo_nodo(no), no))
+      
+    return None
 
 def astar_manhattan(estado: str) -> list[str]:
     """
@@ -196,3 +228,5 @@ def astar_new_heuristic(estado: str) -> list[str]:
     """
     # substituir a linha abaixo pelo seu codigo
     raise NotImplementedError
+
+print(astar_hamming("_13425786"))

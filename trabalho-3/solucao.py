@@ -140,7 +140,7 @@ def dist_hamming(estado):
         #retorna -1 pois é numero de peças fora do lugar, e o espaço _ nao é uma peça 
         return d_hamming-1
 
-def custo_nodo(nodo):
+def custo_nodo_hamming(nodo):
     return nodo.custo + dist_hamming(nodo.estado)
 
 def astar_hamming(estado: str) -> list[str]:
@@ -156,7 +156,7 @@ def astar_hamming(estado: str) -> list[str]:
     explorados = set()
     fronteira = queue.PriorityQueue()
     raiz = Nodo(estado=estado, pai=None, acao=None, custo=0)
-    fronteira.put((custo_nodo(raiz), raiz))
+    fronteira.put((custo_nodo_hamming(raiz), raiz))
 
     while not fronteira.empty():
        dont_care, melhor_no = fronteira.get()
@@ -174,7 +174,7 @@ def astar_hamming(estado: str) -> list[str]:
        vizinhos = expande(melhor_no)   
        for no in vizinhos:
             if no.estado not in explorados:
-                fronteira.put((custo_nodo(no), no))
+                fronteira.put((custo_nodo_hamming(no), no))
       
     return None
 
@@ -228,5 +228,3 @@ def astar_new_heuristic(estado: str) -> list[str]:
     """
     # substituir a linha abaixo pelo seu codigo
     raise NotImplementedError
-
-print(astar_hamming("_13425786"))

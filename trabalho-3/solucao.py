@@ -178,6 +178,17 @@ def astar_hamming(estado: str) -> list[str]:
       
     return None
 
+def dist_manhattan(estado: str):
+    d_manhattan = 0
+    objetivo = "12345678_"
+    for n in range(len(estado)):
+        if objetivo[n] != estado[n] and estado[n] != "_":
+            d_manhattan += abs(objetivo.index(estado[n]) - n)
+    return d_manhattan
+
+def custo_nodo_manhattan(nodo):
+    return nodo.custo + dist_manhattan(nodo.estado)
+
 def astar_manhattan(estado: str) -> list[str]:
     """
     Recebe um estado (string), executa a busca A* com h(n) = soma das distâncias de Manhattan e
@@ -188,7 +199,30 @@ def astar_manhattan(estado: str) -> list[str]:
     :return:
     """
     # substituir a linha abaixo pelo seu codigo
-    raise NotImplementedError
+    explorados = set()
+    fronteira = queue.PriorityQueue()
+    raiz = Nodo(estado=estado, pai=None, acao=None, custo=0)
+    fronteira.put((custo_nodo_manhattan(raiz), raiz))
+
+    while not fronteira.empty():
+       dont_care, melhor_no = fronteira.get()
+
+       if melhor_no.estado == "12345678_":
+            caminho = []
+            while melhor_no.pai is not None:
+                caminho.append(melhor_no.acao)
+                melhor_no = melhor_no.pai
+            caminho.reverse()
+            return caminho
+       
+       explorados.add(melhor_no.estado)
+
+       vizinhos = expande(melhor_no)   
+       for no in vizinhos:
+            if no.estado not in explorados:
+                fronteira.put((custo_nodo_manhattan(no), no))
+      
+    return None
 
 
 def bfs(estado: str) -> list[str]:

@@ -241,9 +241,61 @@ def astar_manhattan(estado: str) -> list[str]:
     return None
 
 
+def dist_euclidiana(estado: str):
+    d_euclidiana = 0
+    objetivo = "12345678_"
+    for n in range(len(estado)):
+        if objetivo[n] != estado[n] and estado[n] != "_":
+            d_euclidiana += (objetivo.index(estado[n]) - n) ** 2
+
+    d_euclidiana = d_euclidiana**0.5
+
+    return d_euclidiana
+
+
+def custo_nodo_euclidiana(nodo):
+    return nodo.custo + dist_euclidiana(nodo.estado)
+
+
+def astar_new_heuristic(estado: str) -> list[str]:
+    """
+    Recebe um estado (string), executa a busca A* com h(n) = distancia euclidiana e
+    retorna uma lista de ações que leva do
+    estado recebido até o objetivo ("12345678_").
+    Caso não haja solução a partir do estado recebido, retorna None
+    :param estado: str
+    :return:
+    """
+    explorados = set()
+    fronteira = queue.PriorityQueue()
+    raiz = Nodo(estado=estado, pai=None, acao=None, custo=0)
+    fronteira.put((custo_nodo_euclidiana(raiz), raiz))
+
+    while not fronteira.empty():
+        dont_care, melhor_no = fronteira.get()
+
+        if melhor_no.estado == "12345678_":
+            caminho = []
+            while melhor_no.pai is not None:
+                caminho.append(melhor_no.acao)
+                melhor_no = melhor_no.pai
+            caminho.reverse()
+            # coleta dos valores para o Readme
+            # print("nos explorados: ", len(explorados))
+            return caminho
+
+        explorados.add(melhor_no.estado)
+
+        vizinhos = expande(melhor_no)
+        for no in vizinhos:
+            if no.estado not in explorados:
+                fronteira.put((custo_nodo_euclidiana(no), no))
+
+    return None
+
+
 # coleta dos valores para o Readme
 # estado = "2_3541687"
-
 # print("BUSCA A* - DISTANCIA HAMMING")
 # tempo_inicial = time.time()
 # custo = len(astar_hamming(estado))
@@ -254,6 +306,13 @@ def astar_manhattan(estado: str) -> list[str]:
 # print("BUSCA A* - DISTANCIA MANHATTAN")
 # tempo_inicial = time.time()
 # custo = len(astar_manhattan(estado))
+# print("custo: ", custo)
+# tempo_final = time.time()
+# print("tempo total de execucao: ", tempo_final - tempo_inicial, "segundos")
+# print()
+# print("BUSCA A* - DISTANCIA EUCLIDIANA")
+# tempo_inicial = time.time()
+# custo = len(astar_new_heuristic(estado))
 # print("custo: ", custo)
 # tempo_final = time.time()
 # print("tempo total de execucao: ", tempo_final - tempo_inicial, "segundos")

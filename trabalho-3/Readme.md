@@ -10,6 +10,9 @@
 | Pedro Henrique Casarotto Rigon | 00325358    |
 
 #
+Para executar a nossa implementação é necessário importar a biblioteca queue (import queue) que faz parte da biblioteca padrão do Python. Ela é utilizada para implementar a estrutura de dados fila. 
+
+#
 ### Os valores abaixo foram obtidos utilizando “2_3541687” como estado inicial para cada um dos algoritmos:
 
 ## Algoritmo A* - heurística Hamming 

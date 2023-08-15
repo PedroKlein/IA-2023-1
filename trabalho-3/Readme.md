@@ -20,4 +20,9 @@
 ## Algoritmo A* - heurística Manhattan 
 * Número de nós expandidos: 2408
 * Custo da solucão encontrada: 23
-* Tempo decorrido: 0.0769 segundos 
+* Tempo decorrido: 0.0769 segundos
+  
+## Algoritmo A* - Nova heurística - Distancia Euclidiana 
+* Número de nós expandidos: 7927
+* Custo da solucão encontrada: 23
+* Tempo decorrido: 0.2192 segundos

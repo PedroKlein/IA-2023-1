@@ -18,6 +18,6 @@
 * Tempo decorrido: 0.3429 segundos
 
 ## Algoritmo A* - heurística Manhattan 
-* Número de nós expandidos: 2419
+* Número de nós expandidos: 2408
 * Custo da solucão encontrada: 23
-* Tempo decorrido: 0.0879 segundos 
+* Tempo decorrido: 0.0769 segundos 

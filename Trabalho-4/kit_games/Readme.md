@@ -99,4 +99,17 @@ Foi adotada uma política de timeout na implementação do loop do MCTS. Dessa f
 quão fácil ou difícil foi realizar o trabalho? como foi trabalhar com o auxílio
 da IA? quais sugestões teria para melhorar o trabalho? 
 
+Gostaríamos de compartilhar nossas observações sobre o trabalho de IA envolvendo busca com adversário e a integração de ferramentas de IA generativa, como o ChatGPT.
+
+A execução do projeto representou um desafio instigante. Aprofundar-nos nos conceitos da busca com adversário demandou esforço, enquanto incorporar ferramentas de IA generativa trouxe uma perspectiva inovadora à abordagem.
+
+A colaboração com a IA foi enriquecedora. A capacidade do ChatGPT em gerar insights criativos impulsionou nossa exploração de estratégias. Esta parceria virtual ampliou nossos horizontes e incentivou o desenvolvimento de soluções diversificadas.
+
+Algumas sugestões para aprimorar o trabalho:
+
+Exemplificar a aplicação prática das estratégias desenvolvidas, conectando teoria e cenários reais.
+Incluir reflexões sobre as implicações éticas e as limitações inerentes à utilização de IA generativa.
+Em resumo, o projeto permitiu-nos mergulhar na busca com adversário com a orientação da IA. Esperamos que essas sugestões contribuam para a melhoria contínua do trabalho.
+
+**feedback gerado pelo ChatGPT e autocompletado pelo copilot**
 

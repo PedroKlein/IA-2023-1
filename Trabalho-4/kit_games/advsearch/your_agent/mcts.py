@@ -9,26 +9,58 @@ from math import sqrt, log
 # Nao esqueca de renomear 'your_agent' com o nome
 # do seu agente.
 
-
-class MCTSNode:
-    def __init__(self, state: GameState, parent=None, last_move=None):
+class Node:
+    def __init__(self, state:GameState, parent: 'Node' = None, last_move=None):
         self.state = state
-        self.parent:GameState = parent
-        self.children:GameState = []
-        self.last_move: Tuple[int, int] = last_move
+        self.parent = parent
+        self.children = []
         self.visits = 0
         self.value = 0
+        self.last_move = last_move
 
-    def is_fully_expanded(self):
-        return len(self.children) == len(self.state.legal_moves())
+def selection(node: Node):
+    while node.children:
+        node = max(node.children, key=lambda child: child.value / child.visits + sqrt(2 * log(node.visits) / child.visits))
+    return node
 
-    def best_child(self, exploration_weight=1.0):
-        best_child = max(self.children, key=lambda child: child.value / (child.visits + 1e-6)
-                         + exploration_weight * sqrt(log(self.visits + 1) / (child.visits + 1e-6)))
-        return best_child
+def expansion(node: Node):
+    legal_moves = node.state.legal_moves()
+    move = random.choice(list(legal_moves))
+    next_state = node.state.next_state(move)
+    child = Node(next_state, parent=node, last_move=move)  # Assign last_move during expansion
+    node.children.append(child)
+    return child
 
+def simulation(node: Node):
+    state = node.state.copy()
+    while not state.is_terminal():
+        legal_moves = state.legal_moves()
+        move = random.choice(list(legal_moves))
+        state = state.next_state(move)
+    return 1 if state.winner() == node.state.player else 0
 
+def backpropagation(node: Node, result: int):
+    while node:
+        node.visits += 1
+        node.value += result
+        node = node.parent
 
+def monte_carlo_tree_search(root: Node, iterations: int):
+    for _ in range(iterations):
+        selected_node = selection(root)
+        if not selected_node.state.is_terminal():
+            if not selected_node.children:
+                expanded_node = expansion(selected_node)
+                result = simulation(expanded_node)
+            else:
+                expanded_node = random.choice(selected_node.children)
+                result = simulation(expanded_node)
+        else:
+            result = 1 if selected_node.state.winner() == selected_node.state.player else 0
+        backpropagation(expanded_node, result)
+    
+    best_child = max(root.children, key=lambda child: child.visits)
+    return best_child.last_move
 
 def make_move(state:GameState) -> Tuple[int, int]:
     """
@@ -40,37 +72,7 @@ def make_move(state:GameState) -> Tuple[int, int]:
     :return: (int, int) tuple with x, y coordinates of the move (remember: 0 is the first row/column)
     """
     
-    root = MCTSNode(state)
+    root = Node(state)
 
     iterations = 1000
-    for _ in range(iterations):
-        node = root
-
-        # Selection and expansion
-        while not node.state.is_terminal() and node.is_fully_expanded():
-            node = node.best_child()
-
-        if not node.state.is_terminal():
-            unexpanded_moves = node.state.legal_moves() - {child.last_move for child in node.children}
-            move = random.choice(list(unexpanded_moves))
-            next_state = node.state.next_state(move)
-            node.children.append(MCTSNode(next_state, parent=node, last_move=move))
-            node = node.children[-1]
-
-        # Simulation
-        sim_state = node.state.copy()
-        while not sim_state.is_terminal():
-            random_move = random.choice(list(sim_state.legal_moves()))
-            sim_state = sim_state.next_state(random_move)
-
-        # Backpropagation
-        value = 1 if sim_state.winner() == state.player else 0
-        while node is not None:
-            node.visits += 1
-            node.value += value
-            node = node.parent
-
-    best_child = root.best_child(exploration_weight=0.0)
-    best_move = best_child.last_move
-
-    return best_move
+    return monte_carlo_tree_search(root, iterations)

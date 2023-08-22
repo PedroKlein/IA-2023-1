@@ -73,6 +73,4 @@ def make_move(state:GameState) -> Tuple[int, int]:
     best_child = root.best_child(exploration_weight=0.0)
     best_move = best_child.last_move
 
-    print(f"best move: {best_move}")
-
     return best_move

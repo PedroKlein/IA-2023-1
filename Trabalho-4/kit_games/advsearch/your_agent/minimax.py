@@ -1,7 +1,6 @@
 from typing import Tuple, Callable
 from ..tttm.gamestate import GameState
 
-
 def minimax_move(
     state: GameState, max_depth: int, eval_func: Callable
 ) -> Tuple[int, int]:
@@ -32,12 +31,17 @@ def minimax_move(
 
     best_move = None
     best_eval = float("-inf")
+    alpha = float("-inf")
+    beta = float("inf")
 
     for move in state.legal_moves():
         child = state.next_state(move)
-        eval = minimax(child, max_depth, False, float("-inf"), float("inf"))
+        eval = minimax(child, max_depth, False, alpha, beta)
         if eval > best_eval:
             best_eval = eval
             best_move = move
+        alpha = max(alpha, eval)
+        if beta <= alpha:
+            break
 
     return best_move

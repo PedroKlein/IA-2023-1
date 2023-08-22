@@ -46,7 +46,6 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 
 ### Resultado da avaliação (qual a melhor implementação, se MCTS ou minimax com qual heurística...):
 
-<<<<<<< Updated upstream:Trabalho-4/kit_games/advsearch/your_agent/Readme.md
 |Heurística|Poda Alfa-Beta|RandomPlayer|
 |--|----|----|
 |**Contagem de Peças**|49|15|

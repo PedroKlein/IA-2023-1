@@ -46,7 +46,6 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 
 ### Resultado da avaliação (qual a melhor implementação, se MCTS ou minimax com qual heurística...):
 
-<<<<<<< Updated upstream:Trabalho-4/kit_games/advsearch/your_agent/Readme.md
 |Heurística|Poda Alfa-Beta|RandomPlayer|
 |--|----|----|
 |**Contagem de Peças**|49|15|
@@ -57,6 +56,8 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 |----|----|
 |35|29|
 
+### VENCEDOR --> MCTS
+
 ### Poda Alfa-Beta vs Poda Alfa-Beta
 
 |Heurística|Heurística|valor|valor|
@@ -65,13 +66,15 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 |**Contagem de Peças**|**Custom - Ordenação**|64|0|
 |**Custom - Ordenação**|**Valor Posicional**|37|27|
 
+### VENCEDOR --> CONTAGEM DE PEÇAS
+
 ### Poda Alfa-Beta vs MCTS
 
 |Heurística|MCTS|valor|valor|
 |--|----|----|----|
-|**Contagem de Peças**|**MCTS**|37|27|
-|**Valor Posicional**|**MCTS**|64|0|
-|**Custom - Ordenação**|**MCTS**|37|27|
+|**Contagem de Peças**|**MCTS**|45|19|
+|**Valor Posicional**|**MCTS**|43|21|
+|**Custom - Ordenação**|**MCTS**|34|30|
 
 
 
@@ -84,7 +87,7 @@ O melhor desempenho encontrado foi no minmax count. Dentre os melhores desempenh
  minimax_custom (55) x (9) minimax_count  
  mcts (31) x (33) minimax_custom  
  minimax_custom (51) x (13) mcts  
->>>>>>> Stashed changes:Trabalho-4/kit_games/Readme.md
+
 ### Implementação escolhida para o torneio e se houve implementação de alguma melhoria no minimax ou no MCTS: 
 
 Com base nos resultados encontrados anteriormente, escolhemos submeter ao torneio o minimax com heuristica de contagem. 

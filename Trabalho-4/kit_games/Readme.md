@@ -74,7 +74,7 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 
 ### Resultado da avaliação (qual a melhor implementação, se MCTS ou minimax com qual heurística...):
 
-O melhor desempenho encontrado foi no minmax count. Dentre os melhores desempenhos, encontramos o minmax_count e minmax_custom, em ambos os casos o primeiro jogador tem uma ampla vantagem. Entretanto, notamos que o minmax_count
+O melhor desempenho encontrado foi no minmax count. Dentre os melhores desempenhos, encontramos o minmax_count e minmax_custom, em ambos os casos o primeiro jogador tem uma ampla vantagem. Entretanto, notamos que o minmax_count tem um desempenho mais consistente e nos casos em que perde (quando é o player 2), tem uma diferença menor em relação ao vencedor.  
 
  minimax_count (39) x (25) mcts  
  mcts (30) x (34) minimax_count  

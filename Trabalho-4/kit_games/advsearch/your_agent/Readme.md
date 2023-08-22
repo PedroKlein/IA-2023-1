@@ -52,6 +52,28 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 |**Valor Posicional**|38|26|
 |**Custom - Ordenação**|35|29|
 
+|MCTS|RandomPlayer|
+|----|----|
+|35|29|
+
+### Poda Alfa-Beta vs Poda Alfa-Beta
+
+|Heurística|Heurística|valor|valor|
+|--|----|----|----|
+|**Contagem de Peças**|**Valor Posicional**|37|27|
+|**Contagem de Peças**|**Custom - Ordenação**|64|0|
+|**Custom - Ordenação**|**Valor Posicional**|37|27|
+
+### Poda Alfa-Beta vs MCTS
+
+|Heurística|MCTS|valor|valor|
+|--|----|----|----|
+|**Contagem de Peças**|**MCTS**|37|27|
+|**Valor Posicional**|**MCTS**|64|0|
+|**Custom - Ordenação**|**MCTS**|37|27|
+
+
+
 ### Implementação escolhida para o torneio e se houve implementação de alguma melhoria no minimax ou no MCTS: 
 
 #

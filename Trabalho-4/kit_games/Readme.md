@@ -78,10 +78,16 @@ O melhor desempenho encontrado foi no minmax count. Dentre os melhores desempenh
 
  minimax_count (39) x (25) mcts  
  mcts (30) x (34) minimax_count  
+ 
  minimax_count (64) x (0) minimax_custom  
  minimax_custom (55) x (9) minimax_count  
+
  mcts (31) x (33) minimax_custom  
  minimax_custom (51) x (13) mcts  
+
+ minimax_count (39) x (25) random  
+ random (18) x (46) minimax_count       
+
 ### Implementação escolhida para o torneio e se houve implementação de alguma melhoria no minimax ou no MCTS: 
 
 Com base nos resultados encontrados anteriormente, escolhemos submeter ao torneio o minimax com heuristica de contagem. 

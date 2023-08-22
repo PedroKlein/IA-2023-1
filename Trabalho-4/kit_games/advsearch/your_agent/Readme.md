@@ -10,7 +10,7 @@
 | Pedro Henrique Casarotto Rigon | 00325358    |
 
 #
-Para executar a nossa implementação é necessário importar as bibliotecas: ...
+Para executar a nossa implementação é necessário importar as bibliotecas: Math e Random Padrão do Python
 
 #
 ## Avaliação da poda alfa-beta no Tic-Tac-Toe Misere:

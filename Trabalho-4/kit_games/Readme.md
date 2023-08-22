@@ -74,7 +74,19 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 
 ### Resultado da avaliação (qual a melhor implementação, se MCTS ou minimax com qual heurística...):
 
+O melhor desempenho encontrado foi no minmax count. Dentre os melhores desempenhos, encontramos o minmax_count e minmax_custom, em ambos os casos o primeiro jogador tem uma ampla vantagem. Entretanto, notamos que o minmax_count
+
+ minimax_count (39) x (25) mcts  
+ mcts (30) x (34) minimax_count  
+ minimax_count (64) x (0) minimax_custom  
+ minimax_custom (55) x (9) minimax_count  
+ mcts (31) x (33) minimax_custom  
+ minimax_custom (51) x (13) mcts  
 ### Implementação escolhida para o torneio e se houve implementação de alguma melhoria no minimax ou no MCTS: 
+
+Com base nos resultados encontrados anteriormente, escolhemos submeter ao torneio o minimax com heuristica de contagem. 
+
+Foi adotada uma política de timeout na implementação do loop do MCTS. Dessa forma, buscamos garantir que a busca respeita o timeout definido pelo professor e não correr risco de ultrapassar o tempo em um loop de tamanho fixo.
 
 #
 ## Feedback: 

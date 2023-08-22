@@ -57,6 +57,8 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 |----|----|
 |35|29|
 
+### VENCEDOR --> MCTS
+
 ### Poda Alfa-Beta vs Poda Alfa-Beta
 
 |Heurística|Heurística|valor|valor|
@@ -65,13 +67,15 @@ O critério de parada utilizado no algoritmo descrito é uma profundidade máxim
 |**Contagem de Peças**|**Custom - Ordenação**|64|0|
 |**Custom - Ordenação**|**Valor Posicional**|37|27|
 
+### VENCEDOR --> CONTAGEM DE PEÇAS
+
 ### Poda Alfa-Beta vs MCTS
 
 |Heurística|MCTS|valor|valor|
 |--|----|----|----|
-|**Contagem de Peças**|**MCTS**|37|27|
-|**Valor Posicional**|**MCTS**|64|0|
-|**Custom - Ordenação**|**MCTS**|37|27|
+|**Contagem de Peças**|**MCTS**|45|19|
+|**Valor Posicional**|**MCTS**|43|21|
+|**Custom - Ordenação**|**MCTS**|34|30|
 
 
 

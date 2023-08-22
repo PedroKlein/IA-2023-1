@@ -1,6 +1,6 @@
 # Trabalho 4 - Grupo 2 - Turma B
 
-## Indentificação
+## Identificação
 
 | Nome                           | Matricula   |
 | :----------------------------- | :---------: |

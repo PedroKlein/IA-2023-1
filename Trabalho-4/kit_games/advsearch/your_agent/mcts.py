@@ -2,6 +2,7 @@ import random
 from typing import Tuple
 from ..othello.gamestate import GameState
 from math import sqrt, log
+import time
 
 # Voce pode criar funcoes auxiliares neste arquivo
 # e tambem modulos auxiliares neste pacote.
@@ -45,8 +46,11 @@ def backpropagation(node: Node, result: int):
         node.value += result
         node = node.parent
 
-def monte_carlo_tree_search(root: Node, iterations: int):
-    for _ in range(iterations):
+def monte_carlo_tree_search(root, max_time):
+    start_time = time.time()
+    iteration = 0
+    
+    while time.time() - start_time < max_time:
         selected_node = selection(root)
         if not selected_node.state.is_terminal():
             if not selected_node.children:
@@ -58,6 +62,8 @@ def monte_carlo_tree_search(root: Node, iterations: int):
         else:
             result = 1 if selected_node.state.winner() == selected_node.state.player else 0
         backpropagation(expanded_node, result)
+        
+        iteration += 1
     
     best_child = max(root.children, key=lambda child: child.visits)
     return best_child.last_move
@@ -74,5 +80,5 @@ def make_move(state:GameState) -> Tuple[int, int]:
     
     root = Node(state)
 
-    iterations = 1000
-    return monte_carlo_tree_search(root, iterations)
+    timeout = 4
+    return monte_carlo_tree_search(root, timeout)

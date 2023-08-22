@@ -17,42 +17,14 @@ Para executar a nossa implementação é necessário importar as bibliotecas: ..
 ### i) Minimax vs. RandomPlayer:
 * ao executar o comando: _python server.py tttm advsearch/randomplayer/agent.py advsearch/your_agent/tttm_minimax.py_ o minimax sempre ganha o randomplayer. Ao inverter a ordem dos jogadores, isto é, executando o comando: _python server.py tttm advsearch/your_agent/tttm_minimax.py advsearch/randomplayer/agent.py_ na grande maioria das partidas o minimax é o vencedor,  no entanto foi perceptível a ocorrência de alguns raros empates.
 
-|Heurística|Poda Alfa-Beta|RandomPlayer|
-|--|----|----|
-|**Contagem de Peças**|20|20|
-|**Valor Posicional**|10|10|
-|**Custom - Ordenação**|10|10|
-|**e_vitoria**|100|100|
-|**mobilidade**|10|20|
-|**cantos_capturados**|20|30|
-|**estabilidade**|40|40|
 
 
 ### ii) Minimax vs. Minimax: 
 * ao executar o comando: _python server.py tttm advsearch/your_agent/tttm_minimax.py advsearch/your_agent/tttm_minimax.py_, isto é, ao realizar as partidas com o minimax disputando consigo mesmo, o resultado obtido foi sempre empate.
 
-|Heurística|Poda Alfa-Beta|RandomPlayer|
-|--|----|----|
-|**Contagem de Peças**|20|20|
-|**Valor Posicional**|10|10|
-|**Custom - Ordenação**|10|10|
-|**e_vitoria**|100|100|
-|**mobilidade**|10|20|
-|**cantos_capturados**|20|30|
-|**estabilidade**|40|40|
 
 ### iii) Minimax vs. "Jogadas Perfeitas": 
 * ao executar o comando: _python server.py tttm advsearch/your_agent/tttm_minimax.py advsearch/humanplayer/agent.py_ ou _python server.py tttm advsearch/humanplayer/agent.py advsearch/your_agent/tttm_minimax.py_ (para testar as duas possibilidades de qual player inicia o jogo), fazendo partidas do minimax contra o humanplayer, e realizando as jogadas perfeitas recomendadas por: https://nyc.cs.berkeley.edu/uni/games/ttt/variants/misere, os resultados obtidos foram sempre empate. 
-
-|Heurística|Poda Alfa-Beta|RandomPlayer|
-|--|----|----|
-|**Contagem de Peças**|20|20|
-|**Valor Posicional**|10|10|
-|**Custom - Ordenação**|10|10|
-|**e_vitoria**|100|100|
-|**mobilidade**|10|20|
-|**cantos_capturados**|20|30|
-|**estabilidade**|40|40|
 
 #
 ## Othello: 
@@ -73,6 +45,12 @@ O algoritmo Minimax explora a árvore de possibilidades de movimento, alternando
 O critério de parada utilizado no algoritmo descrito é uma profundidade máxima fixa igual a 4.
 
 ### Resultado da avaliação (qual a melhor implementação, se MCTS ou minimax com qual heurística...):
+
+|Heurística|Poda Alfa-Beta|RandomPlayer|
+|--|----|----|
+|**Contagem de Peças**|49|15|
+|**Valor Posicional**|38|26|
+|**Custom - Ordenação**|35|29|
 
 ### Implementação escolhida para o torneio e se houve implementação de alguma melhoria no minimax ou no MCTS: 
 
